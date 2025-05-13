@@ -27,6 +27,7 @@ function ChatbotPage() {
   const [isCameraOpen, setIsCameraOpen] = useState(false)
   const [stream, setStream] = useState(null)
   const [showSuggestions, setShowSuggestions] = useState(true)
+  const [showAttachMenu, setShowAttachMenu] = useState(false)
 
   const messagesEndRef = useRef(null)
   const fileInputRef = useRef(null)
@@ -492,7 +493,7 @@ function ChatbotPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       {/* Hero Section with Animated Background */}
-      <section className="relative py-20 overflow-hidden">
+      <section className="relative py-12 sm:py-16 md:py-20 overflow-hidden">
         <div className="absolute inset-0 bg-blue-600 z-0">
           {/* Animated background elements */}
           {[...Array(10)].map((_, i) => (
@@ -591,10 +592,10 @@ function ChatbotPage() {
         >
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-blue-100">
             {/* Chat Header */}
-            <div className="p-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white flex items-center">
-              <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center mr-4 shadow-md">
+            <div className="p-3 sm:p-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white flex items-center">
+              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center mr-3 shadow-md">
                 <svg
-                  className="w-7 h-7 text-blue-600"
+                  className="w-6 h-6 text-blue-600"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -609,10 +610,10 @@ function ChatbotPage() {
                 </svg>
               </div>
               <div>
-                <h2 className="text-2xl font-bold">MediBot</h2>
+                <h2 className="text-xl sm:text-2xl font-bold">MediBot</h2>
                 <div className="flex items-center">
                   <div className="w-2 h-2 rounded-full bg-green-400 mr-2 animate-pulse"></div>
-                  <p className="text-sm text-blue-100">Online and ready to help</p>
+                  <p className="text-xs sm:text-sm text-blue-100">Online and ready to help</p>
                 </div>
               </div>
             </div>
@@ -620,7 +621,7 @@ function ChatbotPage() {
             {/* Chat Messages */}
             <div
               ref={chatContainerRef}
-              className="h-[500px] md:h-[600px] overflow-y-auto p-6 space-y-6 bg-gradient-to-b from-blue-50 to-white"
+              className="h-[400px] sm:h-[500px] md:h-[600px] overflow-y-auto p-3 sm:p-6 space-y-4 sm:space-y-6 bg-gradient-to-b from-blue-50 to-white"
             >
               <AnimatePresence>
                 {messages.map((message) => (
@@ -633,8 +634,8 @@ function ChatbotPage() {
                     transition={{ duration: 0.3 }}
                   >
                     {message.sender === "bot" && (
-                      <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3 flex-shrink-0 shadow-sm">
-                        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-blue-100 flex items-center justify-center mr-2 sm:mr-3 flex-shrink-0 shadow-sm">
+                        <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path
                             strokeLinecap="round"
                             strokeLinejoin="round"
@@ -646,7 +647,7 @@ function ChatbotPage() {
                     )}
 
                     <div
-                      className={`max-w-[85%] rounded-2xl px-5 py-3 shadow-sm ${message.sender === "user"
+                      className={`max-w-[90%] sm:max-w-[85%] rounded-2xl px-3 sm:px-5 py-2 sm:py-3 shadow-sm ${message.sender === "user"
                           ? "bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-br-none"
                           : "bg-white text-gray-800 rounded-bl-none border border-blue-100"
                         }`}
@@ -672,8 +673,8 @@ function ChatbotPage() {
                     </div>
 
                     {message.sender === "user" && (
-                      <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center ml-3 flex-shrink-0 shadow-sm">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-blue-600 flex items-center justify-center ml-2 sm:ml-3 flex-shrink-0 shadow-sm">
+                        <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path
                             strokeLinecap="round"
                             strokeLinejoin="round"
@@ -694,8 +695,8 @@ function ChatbotPage() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
                 >
-                  <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3 flex-shrink-0">
-                    <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-blue-100 flex items-center justify-center mr-2 sm:mr-3 flex-shrink-0">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -706,11 +707,6 @@ function ChatbotPage() {
                   </div>
                   <div className="bg-white text-gray-800 rounded-2xl rounded-bl-none px-5 py-4 shadow-sm border border-blue-100">
                     <div className="flex space-x-2">
-                      <motion.div
-                        className="w-3 h-3 rounded-full bg-blue-400"
-                        animate={{ scale: [1, 1.2, 1] }}
-                        transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY }}
-                      ></motion.div>
                       <motion.div
                         className="w-3 h-3 rounded-full bg-blue-400"
                         animate={{ scale: [1, 1.2, 1] }}
@@ -739,7 +735,7 @@ function ChatbotPage() {
                     {suggestions.map((suggestion, index) => (
                       <motion.button
                         key={index}
-                        className="bg-white text-blue-600 border border-blue-200 rounded-full px-4 py-2 text-sm hover:bg-blue-50 transition-colors shadow-sm"
+                        className="bg-white text-blue-600 border border-blue-200 rounded-full px-3 py-1.5 text-xs sm:text-sm hover:bg-blue-50 transition-colors shadow-sm"
                         onClick={() => handleSuggestionClick(suggestion)}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
@@ -892,76 +888,124 @@ function ChatbotPage() {
               )}
             </AnimatePresence>
 
-            {/* Input Area */}
+            {/* Input Area - Responsive Version */}
             <div className="p-4 border-t border-gray-200 bg-white">
-              <div className="flex items-center">
+              <div className="relative">
                 <textarea
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyPress}
                   placeholder="Type your health question..."
-                  className="flex-1 p-4 border border-gray-300 rounded-l-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none h-14 max-h-32"
+                  className="w-full p-4 pr-24 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none h-14 max-h-32"
                   disabled={isLoading}
                   rows={1}
                   style={{ minHeight: "56px" }}
                 />
-                <div className="flex bg-gray-100 rounded-r-xl border-t border-r border-b border-gray-300">
-                  <motion.button
-                    onClick={handleFileUpload}
-                    className="p-4 text-gray-600 hover:bg-gray-200 transition-colors"
-                    disabled={isLoading || isCameraOpen}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <svg
-                      className="w-6 h-6"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
+
+                {/* Mobile-friendly action buttons */}
+                <div className="absolute right-2 top-1/2 transform -translate-y-1/2 flex items-center space-x-1">
+                  <div className="relative">
+                    <motion.button
+                      onClick={() => setShowAttachMenu(!showAttachMenu)}
+                      className="p-3 text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
+                      disabled={isLoading}
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      aria-label="Attach files"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                      ></path>
-                    </svg>
-                  </motion.button>
-                  <motion.button
-                    onClick={openCamera}
-                    className="p-4 text-gray-600 hover:bg-gray-200 transition-colors"
-                    disabled={isLoading || isCameraOpen}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <svg
-                      className="w-6 h-6"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
-                      ></path>
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"
-                      ></path>
-                    </svg>
-                  </motion.button>
+                      <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"
+                        />
+                      </svg>
+                    </motion.button>
+
+                    {/* Popup menu for attachment options */}
+                    <AnimatePresence>
+                      {showAttachMenu && (
+                        <motion.div
+                          className="absolute bottom-full right-0 mb-2 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden"
+                          initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <motion.button
+                            onClick={() => {
+                              handleFileUpload()
+                              setShowAttachMenu(false)
+                            }}
+                            className="flex items-center space-x-2 w-full text-left p-3 hover:bg-gray-100 transition-colors"
+                            whileHover={{ backgroundColor: "#f3f4f6" }}
+                          >
+                            <svg
+                              className="w-5 h-5 text-blue-600"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                              />
+                            </svg>
+                            <span className="text-sm font-medium">Upload Image</span>
+                          </motion.button>
+
+                          <motion.button
+                            onClick={() => {
+                              openCamera()
+                              setShowAttachMenu(false)
+                            }}
+                            className="flex items-center space-x-2 w-full text-left p-3 hover:bg-gray-100 transition-colors"
+                            whileHover={{ backgroundColor: "#f3f4f6" }}
+                          >
+                            <svg
+                              className="w-5 h-5 text-blue-600"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
+                              />
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"
+                              />
+                            </svg>
+                            <span className="text-sm font-medium">Take Photo</span>
+                          </motion.button>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
                   <motion.button
                     onClick={handleSend}
-                    className="p-4 bg-blue-600 text-white rounded-r-xl hover:bg-blue-700 transition-colors"
+                    className="p-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors"
                     disabled={isLoading}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
+                    aria-label="Send message"
                   >
                     {isLoading ? (
                       <svg
@@ -1003,6 +1047,7 @@ function ChatbotPage() {
                   </motion.button>
                 </div>
               </div>
+
               <input
                 type="file"
                 ref={fileInputRef}
@@ -1011,8 +1056,9 @@ function ChatbotPage() {
                 className="hidden"
                 capture="environment"
               />
+
               <div className="flex items-center mt-3 text-xs text-gray-500">
-                <svg className="w-4 h-4 mr-1 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 mr-1 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -1020,7 +1066,7 @@ function ChatbotPage() {
                     d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <p>
+                <p className="text-xs">
                   Ask any health-related question or upload an image for analysis.
                   <span className="text-red-500 ml-1">Not a substitute for professional medical advice.</span>
                 </p>
@@ -1029,7 +1075,7 @@ function ChatbotPage() {
           </div>
 
           {/* Features Section */}
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="mt-10 sm:mt-16 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
             {[
               {
                 title: "AI-Powered Responses",
@@ -1112,3 +1158,4 @@ function ChatbotPage() {
 }
 
 export default ChatbotPage
+
