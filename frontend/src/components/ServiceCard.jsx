@@ -1,4 +1,11 @@
+import { useNavigate } from 'react-router-dom';
+
 function ServiceCard({ title, description, icon, image }) {
+  const navigate = useNavigate();
+  
+  const handleConsultClick = () => {
+    navigate('/consult', { state: { service: title } });
+  };
   return (
     <div className="service-card bg-white rounded-xl overflow-hidden shadow-lg">
       <div className="h-48 overflow-hidden">
@@ -12,7 +19,17 @@ function ServiceCard({ title, description, icon, image }) {
           <h3 className="text-xl font-bold text-gray-800">{title}</h3>
         </div>
         <p className="text-gray-600 mb-4">{description}</p>
-        <button className="btn-primary w-full">Learn More</button>
+        <div className="flex flex-col sm:flex-row gap-3 mt-6">
+          <button className="btn-outline flex-1 py-2 px-4 border border-blue-600 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">
+            View Detail
+          </button>
+          <button 
+            onClick={handleConsultClick}
+            className="btn-primary flex-1 py-2 px-4 bg-blue-600 text-white hover:bg-blue-700 rounded-lg transition-colors"
+          >
+            Consult
+          </button>
+        </div>
       </div>
     </div>
   )

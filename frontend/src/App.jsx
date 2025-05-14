@@ -12,6 +12,11 @@ import ApiPage from "./pages/ApiPage"
 import TeamPage from "./pages/TeamPage"
 import ChatbotPage from "./pages/ChatbotPage"
 import "./App.css"
+import HospitalPage from "./pages/hospital-page"
+import AdminLogin from "./pages/AdminLogin"
+import ConsultFormPage from "./pages/ConsultFormPage"
+import Dashboard from "./pages/Dashboard"
+import ProtectedRoute from "./components/ProtectedRoute"
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -40,6 +45,17 @@ function App() {
                 <Route path="/api" element={<ApiPage />} />
                 <Route path="/team" element={<TeamPage />} />
                 <Route path="/chatbot" element={<ChatbotPage />} />
+                <Route path="/hospitals" element={<HospitalPage />} />
+                <Route path="/adminlogin" element={<AdminLogin />} />
+                <Route path="/consult" element={<ConsultFormPage />} />
+                <Route 
+                  path="/dashboard" 
+                  element={
+                    <ProtectedRoute>
+                      <Dashboard />
+                    </ProtectedRoute>
+                  } 
+                />
               </Routes>
             </main>
             <Footer />

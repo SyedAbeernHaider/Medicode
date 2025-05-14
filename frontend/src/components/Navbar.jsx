@@ -10,7 +10,7 @@ function Navbar() {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
-    { name: "Services", path: "/services" },
+    { name: "Hospitals", path: "/hospitals" }, // Changed from Services to Hospitals
     { name: "API", path: "/api" },
     { name: "Team", path: "/team" },
     { name: "Chatbot", path: "/chatbot" },
@@ -34,8 +34,8 @@ function Navbar() {
                   key={link.name}
                   to={link.path}
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${location.pathname === link.path
-                    ? "text-blue-600 bg-blue-50"
-                    : "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                      ? "text-blue-600 bg-blue-50"
+                      : "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
                     }`}
                 >
                   {link.name}
@@ -77,8 +77,8 @@ function Navbar() {
                 key={link.name}
                 to={link.path}
                 className={`block px-3 py-2 rounded-md text-base font-medium ${location.pathname === link.path
-                  ? "text-blue-600 bg-blue-50"
-                  : "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                    ? "text-blue-600 bg-blue-50"
+                    : "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
                   }`}
                 onClick={() => setIsOpen(false)}
               >

@@ -1,14 +1,22 @@
 import ServiceCard from "../components/ServiceCard"
 import { Canvas } from "@react-three/fiber"
 import { OrbitControls, Environment } from "@react-three/drei"
+import { useNavigate } from 'react-router-dom';
 
 function ServicesPage() {
+
+  const navigate = useNavigate();
+
+  const handleRedirect = () => {
+    navigate('/consult');
+  };
+
   const services = [
     {
       id: 1,
-      title: "Online Consultations",
+      title: "Orthopedics",
       description: "Connect with experienced doctors from the comfort of your home through secure video consultations.",
-      image: "https://static.toiimg.com/photo/75603851.cms",
+      image: "https://media.istockphoto.com/id/1220958078/photo/doctor-and-patient-doctor-examining-of-the-leg-from-the-knee-and-ankle-and-training-broken.jpg?s=612x612&w=0&k=20&c=G1pyXV8chJBQMT2cN5ZB12tjpcd9QnJlwW9Q0HzZcvA=",
       icon: (
         <svg
           className="w-6 h-6"
@@ -28,9 +36,9 @@ function ServicesPage() {
     },
     {
       id: 2,
-      title: "Health Checkups",
+      title: "General Medicine",
       description: "Comprehensive health assessments and preventive care to keep you in optimal health.",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUSfUFRMHl1Zg89tXgF7NBneRJgFgI6aFJmQ&s",
+      image: "https://media.istockphoto.com/id/530284279/photo/checking-blood-pressure.jpg?s=612x612&w=0&k=20&c=KJdCdv6vs7tva5BXefiF6MfKn2JHwo9iO25_h2CbqI8=",
       icon: (
         <svg
           className="w-6 h-6"
@@ -50,9 +58,9 @@ function ServicesPage() {
     },
     {
       id: 3,
-      title: "Specialist Referrals",
+      title: "Prediatrics",
       description: "Get connected with the right specialists for your specific health needs.",
-      image: "https://queensparkmedical.com.au/wp-content/uploads/2017/12/referral-queens-park-medical.jpg",
+      image: "https://thumbs.dreamstime.com/b/pediatrician-doctor-examines-baby-stethoscope-boy-checking-heart-beat-62382149.jpg",
       icon: (
         <svg
           className="w-6 h-6"
@@ -72,9 +80,9 @@ function ServicesPage() {
     },
     {
       id: 4,
-      title: "Digital Prescriptions",
+      title: "Obstertics & Gynecology",
       description: "Receive electronic prescriptions and medication management through our secure platform.",
-      image: "https://healtha.io/wp-content/uploads/2025/02/Patients-Need-to-Know-About-Digital-Prescriptions.webp",
+      image: "https://www.shutterstock.com/shutterstock/photos/2310961573/display_1500/stock-photo-happy-pregnant-woman-has-appointment-with-doctor-at-clinic-female-gynaecologist-ob-gyn-medic-2310961573.jpg",
       icon: (
         <svg
           className="w-6 h-6"
@@ -94,9 +102,9 @@ function ServicesPage() {
     },
     {
       id: 5,
-      title: "Mental Health Support",
+      title: "Neurology",
       description: "Access professional mental health services and resources for emotional wellbeing.",
-      image: "https://duffstreetclinic.com.au/wp-content/uploads/2023/09/mental-health-4x3-1.jpg",
+      image: "https://bansalgroup-assets.s3.ap-south-1.amazonaws.com/PRD/Bansal_Hospital/2020/09/Neurology-1.jpg",
       icon: (
         <svg
           className="w-6 h-6"
@@ -116,9 +124,9 @@ function ServicesPage() {
     },
     {
       id: 6,
-      title: "Chronic Disease Management",
+      title: "Dermatology",
       description: "Comprehensive care plans and monitoring for patients with chronic conditions.",
-      image: "https://sa1s3optim.patientpop.com/filters:format(webp)/assets/production/practices/905b4e6d0569ca0d5c78c928634131203259121c/images/2679799.jpg",
+      image: "https://media.istockphoto.com/id/1359714290/photo/female-dermatologist-performing-a-procedure-on-a-client.jpg?s=612x612&w=0&k=20&c=hQFfkec2QcDGvXBavNx3Dc4tBtdNk_2frpUqkh6YjVA=",
       icon: (
         <svg
           className="w-6 h-6"
@@ -144,10 +152,13 @@ function ServicesPage() {
       <section className="relative py-16 md:py-20 bg-blue-600 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6">Our Services</h1>
-          <p className="text-lg sm:text-xl max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl max-w-3xl mx-auto mb-8">
             We offer a comprehensive range of healthcare services designed to meet your needs. Our team of experts is
             dedicated to providing you with the highest quality care.
           </p>
+          <button className="bg-white text-blue-600 font-semibold py-3 px-8 rounded-full hover:bg-blue-50 transition-colors duration-300 text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+            Consult Now
+          </button>
         </div>
       </section>
 
@@ -180,9 +191,17 @@ function ServicesPage() {
                     <h3 className="text-xl font-bold text-gray-800">{service.title}</h3>
                   </div>
                   <p className="text-gray-600 mb-6 flex-grow">{service.description}</p>
-                  <button className="mt-auto w-full py-2 px-4 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-colors">
-                    Learn More
-                  </button>
+                  <div className="flex flex-col sm:flex-row gap-3 mt-auto">
+                    <button className="flex-1 py-2 px-4 border border-blue-600 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">
+                      View Detail
+                    </button>
+                    <button
+      className="flex-1 py-2 px-4 bg-blue-600 text-white hover:bg-blue-700 rounded-lg transition-colors"
+      onClick={handleRedirect}
+    >
+      Consult Now
+    </button>
+                  </div>
                 </div>
               </div>
             ))}
