@@ -17,6 +17,7 @@ import AdminLogin from "./pages/AdminLogin"
 import ConsultFormPage from "./pages/ConsultFormPage"
 import Dashboard from "./pages/Dashboard"
 import ProtectedRoute from "./components/ProtectedRoute"
+import HumanHealthStatistics from "./pages/HumanHealthStatistics"
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -48,13 +49,21 @@ function App() {
                 <Route path="/hospitals" element={<HospitalPage />} />
                 <Route path="/adminlogin" element={<AdminLogin />} />
                 <Route path="/consult" element={<ConsultFormPage />} />
-                <Route 
-                  path="/dashboard" 
+                <Route
+                  path="/health"
+                  element={
+                    <ProtectedRoute>
+                      <HumanHealthStatistics />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/dashboard"
                   element={
                     <ProtectedRoute>
                       <Dashboard />
                     </ProtectedRoute>
-                  } 
+                  }
                 />
               </Routes>
             </main>

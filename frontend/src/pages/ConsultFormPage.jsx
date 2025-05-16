@@ -87,15 +87,19 @@ const ConsultFormPage = () => {
                   Full Name <span className="text-red-500">*</span>
                 </label>
                 <div className="mt-1">
-                  <input
-                    type="text"
+                  <select
                     id="fullName"
                     name="fullName"
                     value={formData.fullName}
                     onChange={handleChange}
                     className={`block w-full px-4 py-3 rounded-md border ${errors.fullName ? 'border-red-300' : 'border-gray-300'} shadow-sm focus:ring-blue-500 focus:border-blue-500`}
-                    placeholder="John Doe"
-                  />
+                  >
+                    <option value="">Select a name</option>
+                    <option value="Tom Oliver">Tom Oliver</option>
+                    <option value="Jane Smith">Jane Smith</option>
+                    <option value="Michael Johnson">Michael Johnson</option>
+                    <option value="Sarah Williams">Sarah Williams</option>
+                  </select>
                   {errors.fullName && (
                     <p className="mt-1 text-sm text-red-600">{errors.fullName}</p>
                   )}
@@ -108,15 +112,19 @@ const ConsultFormPage = () => {
                   Phone Number <span className="text-red-500">*</span>
                 </label>
                 <div className="mt-1">
-                  <input
-                    type="tel"
+                  <select
                     id="phoneNumber"
                     name="phoneNumber"
                     value={formData.phoneNumber}
                     onChange={handleChange}
                     className={`block w-full px-4 py-3 rounded-md border ${errors.phoneNumber ? 'border-red-300' : 'border-gray-300'} shadow-sm focus:ring-blue-500 focus:border-blue-500`}
-                    placeholder="+1 (555) 123-4567"
-                  />
+                  >
+                    <option value="">Select a phone number</option>
+                    <option value="+1 (555) 123-4567">+1 (555) 123-4567</option>
+                    <option value="+1 (555) 987-6543">+1 (555) 987-6543</option>
+                    <option value="+1 (555) 456-7890">+1 (555) 456-7890</option>
+                    <option value="+1 (555) 789-0123">+1 (555) 789-0123</option>
+                  </select>
                   {errors.phoneNumber && (
                     <p className="mt-1 text-sm text-red-600">{errors.phoneNumber}</p>
                   )}
@@ -129,17 +137,20 @@ const ConsultFormPage = () => {
                   Age <span className="text-red-500">*</span>
                 </label>
                 <div className="mt-1">
-                  <input
-                    type="number"
+                  <select
                     id="age"
                     name="age"
-                    min="1"
-                    max="120"
                     value={formData.age}
                     onChange={handleChange}
                     className={`block w-full px-4 py-3 rounded-md border ${errors.age ? 'border-red-300' : 'border-gray-300'} shadow-sm focus:ring-blue-500 focus:border-blue-500`}
-                    placeholder="30"
-                  />
+                  >
+                    <option value="">Select an age</option>
+                    <option value="30">30</option>
+                    <option value="25">25</option>
+                    <option value="35">35</option>
+                    <option value="40">40</option>
+                    <option value="45">45</option>
+                  </select>
                   {errors.age && (
                     <p className="mt-1 text-sm text-red-600">{errors.age}</p>
                   )}
@@ -152,15 +163,20 @@ const ConsultFormPage = () => {
                   Concern/Symptoms <span className="text-red-500">*</span>
                 </label>
                 <div className="mt-1">
-                  <textarea
+                  <select
                     id="concern"
                     name="concern"
-                    rows={4}
                     value={formData.concern}
                     onChange={handleChange}
                     className={`block w-full px-4 py-3 rounded-md border ${errors.concern ? 'border-red-300' : 'border-gray-300'} shadow-sm focus:ring-blue-500 focus:border-blue-500`}
-                    placeholder="Please describe your concern or symptoms in detail..."
-                  />
+                  >
+                    <option value="">Select a concern</option>
+                    <option value="Having Fever">Having Fever</option>
+                    <option value="Feeling Laziness">Feeling Laziness</option>
+                    <option value="Headache">Headache</option>
+                    <option value="Stomach Pain">Stomach Pain</option>
+                    <option value="Sore Throat">Sore Throat</option>
+                  </select>
                   {errors.concern && (
                     <p className="mt-1 text-sm text-red-600">{errors.concern}</p>
                   )}

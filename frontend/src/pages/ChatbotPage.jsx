@@ -492,8 +492,8 @@ function ChatbotPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      {/* Hero Section with Animated Background */}
-      <section className="relative py-12 sm:py-16 md:py-20 overflow-hidden">
+      {/* Hero Section with Animated Background - Hidden on mobile */}
+      <section className="relative py-12 sm:py-16 md:py-20 overflow-hidden hidden sm:block">
         <div className="absolute inset-0 bg-blue-600 z-0">
           {/* Animated background elements */}
           {[...Array(10)].map((_, i) => (
