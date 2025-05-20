@@ -10,10 +10,11 @@
       "use": "@vercel/static"
     }
   ],
-  "routes": [
+  "redirects": [
     {
-      "src": "/(.*)",
-      "dest": "dist/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html",
+      "statusCode": 200
     }
   ],
   "rewrites": [
